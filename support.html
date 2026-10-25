@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sirppi3D サポート</title>
+  <link rel="icon" href="icon.png">
+  <style>
+    :root {
+      --bg: #f8f7f4;
+      --surface: #ffffff;
+      --border: #e0ddd8;
+      --text: #1a1917;
+      --text-sub: #5a5754;
+      --accent: #2e6b9e;
+      --accent-light: #e8f0f8;
+      --radius: 10px;
+      --shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, "Hiragino Sans", "Yu Gothic", sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 16px 16px;
+      text-align: center;
+    }
+    .app-icon {
+      width: 60px; height: 60px;
+      background: none;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      box-shadow: var(--shadow);
+    }
+    .app-icon svg { width: 36px; height: 36px; }
+    header h1 { font-size: 22px; font-weight: 700; letter-spacing: 0.01em; }
+    header p { font-size: 14px; color: var(--text-sub); margin-top: 4px; }
+    .lang-switch {
+      font-size: 13px;
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+      padding: 4px 10px;
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+    }
+    .lang-switch:hover { background: var(--accent-light); }
+
+    main { max-width: 680px; margin: 0 auto; padding: 24px 16px 48px; }
+
+    .intro {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 18px 20px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow);
+    }
+    .intro p { font-size: 15px; color: var(--text-sub); }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-sub);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+      margin-top: 32px;
+    }
+
+    .formats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .format-tag {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    }
+
+    .faq-group { margin-bottom: 24px; }
+    .faq-group-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-sub);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0 4px 6px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 8px;
+    }
+
+    details {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 6px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    details + details { margin-top: 0; }
+    summary {
+      padding: 14px 16px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: "＋";
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text-sub);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    details[open] summary::after { content: "−"; }
+    .faq-body {
+      padding: 0 16px 16px;
+      font-size: 14px;
+      color: var(--text-sub);
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+    .faq-body p + p { margin-top: 8px; }
+
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-top: 32px;
+    }
+    .contact-card h2 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+    .contact-card p { font-size: 14px; color: var(--text-sub); margin-bottom: 12px; }
+    .email-link {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .email-link:hover { text-decoration: underline; }
+    .note {
+      font-size: 13px;
+      color: var(--text-sub);
+      margin-top: 10px;
+      padding: 10px 12px;
+      background: var(--accent-light);
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 16px;
+      font-size: 12px;
+      color: var(--text-sub);
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="app-icon"><img src="icon.png" alt="Sirppi3D" width="60" height="60" style="border-radius:14px;display:block"></div>
+  <h1>Sirppi3D サポート</h1>
+  <p>Mac 用 3D データ軽量化アプリ(デシメーション)</p>
+  <a class="lang-switch" href="support_en.html">English</a>
+</header>
+
+<main>
+
+  <div class="intro">
+    <p>Sirppi3D は、重い 3D データのポリゴン数を減らす(デシメーション)Mac 用アプリです。iPhone・iPad 用の 3D ビューワー「Kuu3D」で開けるサイズに整えることを、おもな目的にしています。無料で、機能の制限はありません。</p>
+  </div>
+
+  <div class="section-title">対応ファイル形式</div>
+  <div class="formats"><span class="format-tag">STL</span><span class="format-tag">OBJ</span><span class="format-tag">PLY</span><span class="format-tag">OFF</span><span class="format-tag">glTF</span><span class="format-tag">GLB</span><span class="format-tag">USD / USDA / USDC / USDZ</span><span class="format-tag">ABC</span><span class="format-tag">DAE</span></div>
+  <p class="note" style="margin-bottom:24px">書き出し: STL / OBJ / GLB / PLY　|　動作環境: macOS 13 以降</p>
+
+  <div class="section-title">よくある質問</div>
+
+  <div class="faq-group">
+    <div class="faq-group-title">基本の使い方</div>
+
+    <details>
+      <summary>どうやって使いますか?</summary>
+      <div class="faq-body"><p>3D ファイルをウインドウにドロップ(またはメニューの「ファイル ▸ 開く」、⌘O)して、目標の三角形数を決め、「Export」を押します。結果は元のファイルと同じ場所(または「出力フォルダー」で選んだ場所)に保存されます。元のファイルは変更されません。</p></div>
+    </details>
+
+    <details>
+      <summary>「Kuu3D安全サイズに合わせる」とは?</summary>
+      <div class="faq-body"><p>Kuu3D で安全に開ける大きさ(STL で 80MB、約 160 万三角形)に合わせるボタンです。スライダー上のオレンジの目印が、その位置です。大きすぎるデータは、読み込み時にこの大きさまで自動で整えて表示します。</p></div>
+    </details>
+
+    <details>
+      <summary>元のデータと見比べられますか?</summary>
+      <div class="faq-body"><p>Space キーを押している間、元のデータを表示します。「元データを表示」のチェックでも切り替えられます。</p></div>
+    </details>
+
+    <details>
+      <summary>画面の操作を教えてください。</summary>
+      <div class="faq-body"><p>マウスのホイール(トラックパッドはピンチ)でズーム、右ドラッグで回転、左ドラッグで移動(パン)です。Z 軸が上のデータは、「Z-up 表示」をオンにすると正しい向きで見られます。</p></div>
+    </details>
+  </div>
+
+  <div class="faq-group">
+    <div class="faq-group-title">読み込み・書き出し</div>
+
+    <details>
+      <summary>開けない形式があります。</summary>
+      <div class="faq-body"><p>ZTL、FBX、Blend、3MF などには対応していません。元のアプリから OBJ、PLY、GLB、USDZ のいずれかで書き出してから開いてください。点群(面のない PLY)も対象外です。</p></div>
+    </details>
+
+    <details>
+      <summary>テクスチャや色はどうなりますか?</summary>
+      <div class="faq-body"><p>UV とテクスチャは、デシメーションで失われます(形状のみ保持)。頂点カラーは、PLY で書き出したときだけ残ります。画面表示では、頂点カラーは使いません。</p></div>
+    </details>
+
+    <details>
+      <summary>出力形式はどれを選べばよいですか?</summary>
+      <div class="faq-body"><p>Kuu3D で開くなら、読み込みの速い STL をおすすめします(OBJ は Kuu3D での読み込みが遅くなります)。頂点カラーを残したいときは PLY を選んでください。</p></div>
+    </details>
+
+    <details>
+      <summary>サイズ(単位)がずれます。</summary>
+      <div class="faq-body"><p>STL には単位がなく、Kuu3D は値を mm として読みます。「元の単位」に元データの単位(mm / cm / m / inch)を選ぶと、mm に換算して保存します。</p></div>
+    </details>
+
+    <details>
+      <summary>ファイル名はどうなりますか?</summary>
+      <div class="faq-body"><p>既定では、末尾に三角形数が付きます(例: model_1500k.stl)。「ファイル名の接尾辞」で、_decimated、自由な文字、なし、から選べます。同じ名前のファイルがあるときは、上書きせずに番号を付けて保存します。</p></div>
+    </details>
+  </div>
+
+  <div class="faq-group">
+    <div class="faq-group-title">デシメーション</div>
+
+    <details>
+      <summary>目標の三角形数まで減りません。</summary>
+      <div class="faq-body"><p>「詳細設定」の「形状保持の強さ」をオンにしていると、形の誤差が大きくなる前に処理を止めるため、目標に届かないことがあります。届かせたいときは、オフにしてください。</p></div>
+    </details>
+
+    <details>
+      <summary>「デシメーションは不要です」と出ます。</summary>
+      <div class="faq-body"><p>目標の三角形数が元のデータ以上のときの表示です。その場合は、形式の変換だけを行います。</p></div>
+    </details>
+
+    <details>
+      <summary>処理を止められますか?</summary>
+      <div class="faq-body"><p>処理中に「キャンセル」を押すと、書き出しを止め、途中のファイルを削除します。</p></div>
+    </details>
+  </div>
+
+  <div class="faq-group">
+    <div class="faq-group-title">プライバシー・料金</div>
+
+    <details>
+      <summary>料金はかかりますか?</summary>
+      <div class="faq-body"><p>かかりません。無料で、機能の制限もありません。</p></div>
+    </details>
+
+    <details>
+      <summary>データは外へ送信されますか?</summary>
+      <div class="faq-body"><p>いいえ。通信を行わず、開いたデータは Mac の外へ出ません。個人情報も収集しません。くわしくは、プライバシーポリシーをご覧ください。</p></div>
+    </details>
+  </div>
+
+  <div class="contact-card">
+    <h2>お問い合わせ</h2>
+    <p>解決しない場合は、メールでご連絡ください。件名に「Sirppi3D」と入れていただくと、スムーズに対応できます。</p>
+    <a class="email-link" href="mailto:support.studio.yoru@gmail.com">support.studio.yoru@gmail.com</a>
+    <div class="note">お問い合わせの際は、macOS のバージョン、データの形式と三角形数、発生した状況を添えてください。</div>
+  </div>
+
+</main>
+
+<footer>
+  <p><a href="privacy.html">プライバシーポリシー</a> &nbsp;|&nbsp; <a href="support_en.html">English</a></p>
+  <p style="margin-top:8px;">© 2026 Studio_Yoru</p>
+</footer>
+
+</body>
+</html>
